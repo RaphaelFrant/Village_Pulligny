@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main>
+        
+        {{form_start(formEvent)}}
+            {{form_rest(formEvent)}}
+            <button type="submit">Enregistrer</button>
+        {{form_end(formEvent)}}
+        
+
+    </main>
+
+{% endblock %}

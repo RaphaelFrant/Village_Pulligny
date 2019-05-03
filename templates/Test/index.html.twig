@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main>
+
+
+        <section>
+
+            <article>
+                <h2>Info pratique</h2>
+                {% for result in results %}
+                    <h5>
+                        <a href="{{ path('test.show', {id: result.id})}}">{{ result.titre }}</a>
+                    </h5>
+                    <p>{{ result.description }}<br/>
+                    Il reste {{ result.placeRest }} place(s) sur {{ result.nbrePlace }}.</p>
+                {% endfor  %}
+            </article>
+
+            
+
+        </section>
+        
+
+        
+
+    </main>
+
+{% endblock %}
