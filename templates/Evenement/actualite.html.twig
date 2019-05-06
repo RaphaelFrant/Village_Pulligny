@@ -5,7 +5,14 @@
     <main>
 
         <h2>Actualité</h2>
-        <p>Voici notre actualité</p>
+        {% for actualite in actualites %}
+            <h5>
+                <a href="{{ path('event.detail', {id: actualite.id})}}">{{actualite.titre}}</a>
+            </h5>
+            <p>{{actualite.type}}</p>
+            <p>{{actualite.description}}</p>
+            <p>Date : {{actualite.dateEvent|date('Y/m/d')}}</p>
+        {% endfor %}
 
     </main>
 

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main>
+
+        <h2>{{detailEvent.titre}}</h2>
+
+        <p>Date: {{detailEvent.dateEvent|date('Y/m/d')}}<br/>
+        {{detailEvent.type}}<br/>
+        {{detailEvent.description}}</p>
+        
+
+    </main>
+
+{% endblock %}

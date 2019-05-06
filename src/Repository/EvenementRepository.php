@@ -19,6 +19,18 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
+    /**
+     * Méthode renvoyant les actualités sur la page correspondante
+     */
+    public function eventActu(){
+        return $this->createQueryBuilder('e')
+            ->andwhere('e.dateEvent > :dateJour')
+            ->setParameter('dateJour', date('Y-m-d'))
+            ->orderBy('e.dateEvent', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Evenement[] Returns an array of Evenement objects
     //  */

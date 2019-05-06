@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main>
+        <h1>Gestion des événements</h1>
+
+        <a href="{{path('admin.creation')}}" class="btn btn-primary">Ajouter</a>
+        <table>
+                    
+            <tbody>
+                <tr>
+                    <td><b>Evenements</b></td>
+                    <td><b>Actions</b></td>
+                </tr>
+                {% for event in eventList %}
+                    <tr>
+                        <td>{{ event.titre }}</td>
+                        <td><a href="{{path('admin.event.edit', {id: event.id})}}" class="btn btn-primary">Modifier</a>
+                            <a href="#" class="btn btn-primary">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>    
+
+    </main>
+
+{% endblock %}

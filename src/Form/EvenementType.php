@@ -15,7 +15,9 @@ class EvenementType extends AbstractType
             ->add('titre')
             ->add('type')
             ->add('description')
-            ->add('dateEvent')
+            ->add('dateEvent', null, [
+                'label' => 'Date de l\'événement'
+            ])
             ->add('inscription')
         ;
     }
