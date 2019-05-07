@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EvenementRepository")
+ * @UniqueEntity("titre")
  */
 class Evenement
 {
@@ -17,11 +20,13 @@ class Evenement
     private $id;
 
     /**
+     * @Assert\Length(min=3, max=100)
      * @ORM\Column(type="string", length=100)
      */
     private $titre;
 
     /**
+     * @Assert\Length(min=3, max=100)
      * @ORM\Column(type="string", length=100)
      */
     private $type;

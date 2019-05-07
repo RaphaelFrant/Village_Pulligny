@@ -35,6 +35,7 @@ class AdminEventController extends AbstractController{
         if($formEvent->isSubmitted() && $formEvent->isValid()){
             $this->managEvent->persist($eventEntr);
             $this->managEvent->flush();
+            $this->addFlash('success', 'Événement créé.');
             return $this->redirectToRoute('admin.crud');
         }
 
@@ -66,6 +67,7 @@ class AdminEventController extends AbstractController{
 
         if($formModifEvent->isSubmitted() && $formModifEvent->isValid()){
             $this->managEvent->flush();
+            $this->addFlash('success', 'Événement bien modifié.');
             return $this->redirectToRoute('admin.crud');
         }
 
@@ -82,6 +84,7 @@ class AdminEventController extends AbstractController{
         if($this->isCsrfTokenValid('delete' . $event->getId(), $request->get('_token'))){
             $this->managEvent->remove($event);
             $this->managEvent->flush();
+            $this->addFlash('success', 'Événement supprimé.');
         }
         
         return $this->redirectToRoute('admin.crud');
