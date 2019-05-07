@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main>
+
+        <h1>Compte Utilisateur</h1>
+        <form method="POST">
+            <label>Username</label>
+            <input type="text" name="_username"/>
+            <br/>
+            <label>Mot de passe</label>
+            <input type="paswword" name="_password"/><br/>
+
+            <button type="submit">Connexion</button>
+
+        </form>
+
+    </main>
+
+{% endblock %}

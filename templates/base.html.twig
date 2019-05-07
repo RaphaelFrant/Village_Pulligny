@@ -35,11 +35,18 @@
                             <a class="nav-link" href="{{ path('contact')}}">Contact <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="{{ path('administration')}}">Administration <span class="sr-only"></span></a>
+                            <a class="nav-link" href="{{ path('login')}}">Administration <span class="sr-only"></span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin.crud')}}">CrudEvent <span class="sr-only"></span></a>
-                    </li>
+                  </ul>
+                  <ul class="navbar-nav mr-auto">
+                    {% if app.user %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ path('admin.crud')}}">Gestion d'événement <span class="sr-only"></span></a>
+                      </li>
+                      <li class="nav-item"></li>
+                        <a class="nav-link" href="{{ path('logout')}}">Se Déconnecter<span class="sr-only"></span></a>
+                      </li>
+                    {% endif %}
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
