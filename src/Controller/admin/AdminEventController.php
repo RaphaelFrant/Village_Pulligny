@@ -38,7 +38,7 @@ class AdminEventController extends AbstractController{
             return $this->redirectToRoute('admin.crud');
         }
 
-        return $this->render("Evenement/adminEvent.html.twig", [
+        return $this->render("Administration/evenement/adminEvent.html.twig", [
             'formEvent' => $formEvent->createView()
         ]);
     }
@@ -51,13 +51,13 @@ class AdminEventController extends AbstractController{
         $reposit = $this->getDoctrine()->getRepository(Evenement::class);
         $eventList = $reposit->findAll();
 
-        return $this->render("Evenement/crudEvent.html.twig", [
+        return $this->render("Administration/evenement/crudEvent.html.twig", [
             'eventList' => $eventList
         ]);
     }
 
     /**
-     * @Route("/admin/{id}", name="admin.event.edit")
+     * @Route("/admin/{id}", name="admin.event.edit", methods="GET|POST")
      */
     public function editEvent(Evenement $event, Request $request){
 
@@ -69,12 +69,23 @@ class AdminEventController extends AbstractController{
             return $this->redirectToRoute('admin.crud');
         }
 
-        return $this->render('Evenement/editEvent.html.twig', [
+        return $this->render('Administration/evenement/editEvent.html.twig', [
             'evenement' => $event,
             'formModifEvent' => $formModifEvent->createView()
         ]);
     }
-    
+
+    /**
+     * @Route("/admin/{id}", name="admin.event.suppr", methods="DELETE")
+     */
+    public function suppression(Evenement $event, Request $request){
+        if($this->isCsrfTokenValid('delete' . $event->getId(), $request->get('_token'))){
+            $this->managEvent->remove($event);
+            $this->managEvent->flush();
+        }
+        
+        return $this->redirectToRoute('admin.crud');
+    }
 }
 
 ?>

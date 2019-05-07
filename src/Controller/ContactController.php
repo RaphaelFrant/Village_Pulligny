@@ -9,17 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController{
 
     /**
-     * @Route("/contact", name="contact", methods="['GET']")
+     * @Route("/contact", name="contact")
      */
     public function contacter(){
-        return $this->render("Contact/contact.html.twig");
-    }
-
-    
-    /**
-     * @Route("/contact", name="contact", methods="['POST']")
-     */
-    public function contacterPost(){
         return $this->render("Contact/contact.html.twig");
     }
 }
