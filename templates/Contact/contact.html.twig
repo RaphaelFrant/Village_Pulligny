@@ -4,7 +4,15 @@
 
     <main>
 
-        <h1>Contactez nous</h1>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {% if not formContact.vars.valid %}
+            <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
+        {% endif %}
+
+        <h2>Contactez nous</h2>
         <p>Veuillez remplir les champs suivants</p>
 
         {{form_start(formContact)}}

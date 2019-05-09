@@ -21,13 +21,15 @@ class AdminServiceController extends AbstractController{
     }
 
     /**
-     * @Route("/admin/horaire/{id}", name="admin.horaire.edit", methods="GET|POST")
+     * @Route("/admin/horaire", name="admin.horaire.edit", methods="GET|POST")
      */
-    /*public function modifHoraire(){
+    public function modifHoraire(Service $service, Request $request){
 
-        
+        return $this->render('Administration/service/editService.html.twig', [
+            'service' => $service
+        ]);
 
-    }*/
+    }
 
 }
 
