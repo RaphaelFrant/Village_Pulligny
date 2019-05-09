@@ -4,19 +4,13 @@
 
     <main>
 
-        <h1>Contacts Utiles</h1>
+        <h1>Contactez nous</h1>
         <p>Veuillez remplir les champs suivants</p>
 
-        <form method="post">
-            <label>Votre nom</label>
-            <input type="text"><br/>
-            <label>Votre mail</label>
-            <input type="email"><br/>
-            <label>Votre téléphone</label>
-            <input type="tel"><br/>
-            <label>Votre message</label>
-            <input type="text"><br/>
-        </form>
+        {{form_start(formContact)}}
+            {{form_rest(formContact)}}
+            <button type="submit">Envoyer</button>
+        {{form_end(formContact)}}
 
     </main>
 

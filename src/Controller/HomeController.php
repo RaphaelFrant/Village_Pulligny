@@ -5,35 +5,17 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Test;
+use App\Entity\Service;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\TestRepository;
+use App\Repository\ServiceRepository;
 
 class HomeController extends AbstractController{
 
-    /*private $managEvent;
-    private $reposit;
-
-    public function __contruct(TestRepository $reposit){
-        $this->reposit = $reposit;
-    }*/
 
     /**
      * @Route("/", name="home")
      */
     public function index(){
-
-        /*$reposit = $this->getDoctrine()->getRepository(Test::class);
-        $result = $reposit->findAll();*/
-
-        /*$placeRest = 10;
-        $result = $reposit->vuePlaceRest($placeRest); 
-
-        dump($result);*/
-
-        /*return $this->render("Home/home.html.twig", [
-            'results' => $result
-        ]);*/
 
         return $this->render("Home/home.html.twig");
         
@@ -50,7 +32,13 @@ class HomeController extends AbstractController{
      * @Route("/service", name="service")
      */
     public function service(){
-        return $this->render("Home/service.html.twig");
+
+        $reposit = $this->getDoctrine()->getRepository(Service::class);
+        $horaireList = $reposit->findAll();
+    
+        return $this->render("Home/service.html.twig", [
+            'horaireList' => $horaireList
+        ]); 
     }
 
 }

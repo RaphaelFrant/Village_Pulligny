@@ -5,7 +5,33 @@
     <main>
 
         <h2>Horaires et services</h2>
-        <p>Nous proposons les services suivants</p>
+
+        <h4>Horaires</h4>
+        
+            <table>
+                {% for horaire in horaireList %}
+                    <tr>
+                        <td>{{ horaire.nomJour }}</td><td>{{ horaire.heureDebut|date('H:m') }}</td><td>{{ horaire.heureFin|date('H:m') }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        
+
+        {% if app.user %}
+            <a href="#" class="btn btn-primary">Mise à jour</a>
+        {% endif %}
+
+        <h4>Services Proposés</h4>
+        <ul>
+            <li>Serv1</li>
+            <li>Serv1</li>
+            <li>Serv1</li>
+            <li>Serv1</li>
+            <li>Serv1</li>
+            <li>Serv1</li>
+            <li>Serv1</li>
+        </ul>
+        
 
     </main>
 

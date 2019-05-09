@@ -23,7 +23,6 @@ class AdminEventController extends AbstractController{
     }
 
     /**
-     * 
      * @Route("/admin/create", name="admin.creation")
      */
     public function creation(Request $request){
