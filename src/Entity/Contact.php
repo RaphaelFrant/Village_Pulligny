@@ -6,14 +6,35 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Contact{
 
+    /**
+     * @Assert\NotNull
+     * @Assert\Length(min=2, max=30)
+     */
     private $nom;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Length(min=2, max=30)
+     */
     private $prenom;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Email()
+     */
     private $email;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Regex("/^[0-9]{10}$/")
+     */
     private $telephone;
+
+    /**
+     * @Assert\NotNull
+     * @Assert\Length(min=10, max=250)
+     */
     private $message;
-
-	
-
 
     /**
      * Get the value of nom

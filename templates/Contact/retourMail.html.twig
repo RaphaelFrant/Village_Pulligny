@@ -1,0 +1,17 @@
+
+{% block title %}<h1>Message de contact</h1>{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        <p>M. ou MME. {{ contact.nom }} {{ contact.prenom }} vous a envoyé un message.</p>
+
+        <p>{{ contact.message }}</p>
+
+        <p>Vous pouvez le/la recontacter à l'adresse : <a href="{{ contact.email }}">{{contact.email}}</a><br>
+        Ou bien par téléphone au {{ contact.telephone }}</p>
+
+    </main>
+
+{% endblock %}
