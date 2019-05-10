@@ -9,11 +9,16 @@ use App\Entity\Service;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ServiceRepository;
 
+/**
+ * Classe controller permettant de gérer les pages statiques
+ */
 class HomeController extends AbstractController{
 
 
     /**
+     * Méthode permettant de renvoyer la page d'accueil
      * @Route("/", name="home")
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function index(){
 
@@ -22,14 +27,18 @@ class HomeController extends AbstractController{
     }
 
     /**
+     * Méthode permettant de renvoyer la page "Histoire"
      * @Route("/history", name="history")
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function histoire(){
         return $this->render("Home/history.html.twig");
     }
 
     /**
+     * Méthode permettant de renvoyer la page "Services"
      * @Route("/service", name="service")
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function service(){
 

@@ -9,13 +9,19 @@ use App\Entity\Evenement;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\EvenementRepository;
 
+/**
+ * Classe controller des événements
+ */
 class EventController extends AbstractController{
 
+    //VARIABLE
     private $managEvent;
     private $reposit;
 
     /**
+     * Méthode permettant d'affichr l'ensemble des événements de la base de données dans la page "Evenement"
      * @Route("/event", name="event")
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function event(){
 
@@ -28,7 +34,10 @@ class EventController extends AbstractController{
     }
 
     /**
+     * Méthode permettant d'avoir les détails sur un événement précis
      * @Route("/event/{id}", name="event.detail")
+     * @param Evenement $detailEvent
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function detail(Evenement $detailEvent){
 
@@ -38,7 +47,9 @@ class EventController extends AbstractController{
     }
 
     /**
+     * Méthode permettant de n'afficher que les événements qui n'ont pas encore eu lieu sur la page "Actualité"
      * @Route("/actu", name="actu")
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function actu(){
 

@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserSecurity implements UserInterface, \Serializable
 {
+
+    //VARIABLE
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -33,6 +35,8 @@ class UserSecurity implements UserInterface, \Serializable
      */
     private $password;
 
+
+    //GETTEUR et SETTEUR
     public function getId(): ?int
     {
         return $this->id;

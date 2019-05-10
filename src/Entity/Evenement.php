@@ -7,11 +7,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * Classe Evénement permettant la création d'objet événement
  * @ORM\Entity(repositoryClass="App\Repository\EvenementRepository")
  * @UniqueEntity("titre")
  */
 class Evenement
 {
+    //VARIABLE
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -41,6 +43,7 @@ class Evenement
      */
     private $dateEvent;
 
+    //GETTEUR et SETTEUR
     /**
      * @ORM\Column(type="boolean")
      */

@@ -11,13 +11,19 @@ use App\Entity\Contact;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Mailer\ContactMailer;
 
+/**
+ * Méthode permettant de gérer la page twig de contact
+ */
 class ContactController extends AbstractController{
 
 
-    //private $contactMailer;
 
     /**
+     * Méthode permettant d'envoyer un message à la boite mail municipale
      * @Route("/contact", name="contact")
+     * @param Request $request
+     * @param ContactMailer $contactMailer
+     * @return Request Retourne la page de contact
      */
     public function contacter(Request $request, ContactMailer $contactMailer){
 
@@ -26,11 +32,11 @@ class ContactController extends AbstractController{
         $formContact->handleRequest($request);
 
         if($formContact->isSubmitted() && $formContact->isValid()){
+            //Appel de la méthode d'envoie de mail
             $contactMailer->notify($contact);
             $this->addFlash('success', 'Message bien envoyé');
             return $this->redirectToRoute("contact");
         }
-
 
         return $this->render("Contact/contact.html.twig", [
             'formContact' => $formContact->createView()

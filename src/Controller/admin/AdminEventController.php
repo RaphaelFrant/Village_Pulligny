@@ -11,19 +11,29 @@ use App\Entity\Evenement;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
-
+/**
+ * Classe permettant la gestion des pages concernant la gestion des événements en administrateur
+ */
 class AdminEventController extends AbstractController{
 
-    
+    //VARIABLE
     private $reposit;
 
+    /**
+     * Méthode de construction de la classe
+     * @param EvenementRepository $reposit
+     * @param ObjectManager $managEvent
+     */
     public function __construct(EvenementRepository $reposit, ObjectManager $managEvent){
         $this->reposit = $reposit;
         $this->managEvent = $managEvent;
     }
 
     /**
+     * Méthode permettant de créer un nouvel événement
      * @Route("/admin/create", name="admin.creation")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response;
      */
     public function creation(Request $request){
 
@@ -44,7 +54,9 @@ class AdminEventController extends AbstractController{
     }
 
     /**
+     * Méthode permettant de récupérer la liste des événements
      * @Route("/admin/recupEvent", name="admin.crud")
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function recupEvent(){
 
@@ -57,7 +69,11 @@ class AdminEventController extends AbstractController{
     }
 
     /**
+     * Méthode permettant d'éditer un événement
      * @Route("/admin/{id}", name="admin.event.edit", methods="GET|POST")
+     * @param Evenement $event
+     * @param Request $request
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function editEvent(Evenement $event, Request $request){
 
@@ -77,7 +93,11 @@ class AdminEventController extends AbstractController{
     }
 
     /**
+     * Méthode permettant de supprimer un événement
      * @Route("/admin/{id}", name="admin.event.suppr", methods="DELETE")
+     * @param Evenement $event
+     * @param Request $request
+     * @return Symfony\Component\HttpFoundation\Response;
      */
     public function suppression(Evenement $event, Request $request){
         if($this->isCsrfTokenValid('delete' . $event->getId(), $request->get('_token'))){

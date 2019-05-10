@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
+ * Classe permettant de réaliser des requêtes SQL auprès de la base de données, sur la table Evenement
  * @method Evenement|null find($id, $lockMode = null, $lockVersion = null)
  * @method Evenement|null findOneBy(array $criteria, array $orderBy = null)
  * @method Evenement[]    findAll()
@@ -14,6 +15,11 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EvenementRepository extends ServiceEntityRepository
 {
+
+    /**
+     * Méthode de construction de l'objet
+     * @param RegistryInterface $registry
+     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Evenement::class);
@@ -21,6 +27,7 @@ class EvenementRepository extends ServiceEntityRepository
 
     /**
      * Méthode renvoyant les actualités sur la page correspondante
+     * @return Evenement[] Retourne une liste d'objet de type Evénement
      */
     public function eventActu(){
         return $this->createQueryBuilder('e')

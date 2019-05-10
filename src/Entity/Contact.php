@@ -4,8 +4,12 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Classe Contact permettant la création d'objet du même type
+ */
 class Contact{
 
+    //VARIABLE
     /**
      * @Assert\NotNull
      * @Assert\Length(min=2, max=30)
@@ -36,6 +40,7 @@ class Contact{
      */
     private $message;
 
+    //GETTEUR et SETTEUR
     /**
      * Get the value of nom
      */ 

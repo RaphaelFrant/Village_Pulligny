@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Classe service permettant la création d'objet du même type
  * @ORM\Entity(repositoryClass="App\Repository\ServiceRepository")
  */
 class Service
 {
+
+    //VARIABLE
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -31,6 +34,7 @@ class Service
      */
     private $heureFin;
 
+    //GETTEUR et SETTEUR
     public function getId(): ?int
     {
         return $this->id;

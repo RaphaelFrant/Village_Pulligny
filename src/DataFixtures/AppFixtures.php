@@ -7,8 +7,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Evenement;
 use Faker\Factory;
 
+/**
+ * Classe permettant de générer des objets Evenement de façon aléatoire
+ */
 class AppFixtures extends Fixture
 {
+    /**
+     * Méthode de création d'objet Evénement dans la base de données
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         

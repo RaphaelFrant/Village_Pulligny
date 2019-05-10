@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
+ * Classe permettant de réaliser des requêtes SQL auprès de la base de données, sur la table User
  * @method UserSecurity|null find($id, $lockMode = null, $lockVersion = null)
  * @method UserSecurity|null findOneBy(array $criteria, array $orderBy = null)
  * @method UserSecurity[]    findAll()
