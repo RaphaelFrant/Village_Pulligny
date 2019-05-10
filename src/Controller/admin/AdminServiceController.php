@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Service;
+use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -21,12 +22,22 @@ class AdminServiceController extends AbstractController{
     }
 
     /**
-     * @Route("/admin/horaire", name="admin.horaire.edit", methods="GET|POST")
+     * @Route("/admin/horaire/{id}", name="admin.horaire.edit")
      */
     public function modifHoraire(Service $service, Request $request){
 
+        $formModifHeure = $this->createForm(ServiceType::class, $service);
+        $formModifHeure->handleRequest($request);
+
+        if($formModifHeure->isSubmitted() && $formModifHeure->isValid()){
+            $this->managEvent->flush();
+            $this->addFlash('success', 'Horaire bien modifié.');
+            return $this->redirectToRoute('service');
+        }
+
         return $this->render('Administration/service/editService.html.twig', [
-            'service' => $service
+            'service' => $service,
+            'formModifHeure' => $formModifHeure->createView()
         ]);
 
     }

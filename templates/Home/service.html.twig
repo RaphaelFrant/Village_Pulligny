@@ -7,6 +7,10 @@
         <h2>Horaires et services</h2>
 
         <h4>Horaires</h4>
+
+        {% for message in app.flashes('success') %}
+            <div>{{ message }}</div>
+        {% endfor %}
         
             <table>
                 {% for horaire in horaireList %}
