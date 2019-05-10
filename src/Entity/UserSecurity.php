@@ -94,6 +94,7 @@ class UserSecurity implements UserInterface, \Serializable
     }
 
     /**
+     * Permet d'effacer des données utilisateur qui pourraient être sensibles
      * @see UserInterface
      */
     public function getSalt()
@@ -111,6 +112,7 @@ class UserSecurity implements UserInterface, \Serializable
     }
 
     /**
+     * Transforme l'objet  en chaine de caractère
      * @see \Serializable::serialize()
      */
     public function serialize()
@@ -124,6 +126,7 @@ class UserSecurity implements UserInterface, \Serializable
     }
 
     /**
+     * Permet de construire l'objet
      * @see \Serializable::unserialize()
      */
     public function unserialize($serialized)

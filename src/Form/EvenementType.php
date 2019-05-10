@@ -15,9 +15,11 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
  */
 class EvenementType extends AbstractType
 {
-    
+
     /**
      * Méthode permettant de créer le formulaire avec le nom des champs et les contraintes
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -34,6 +36,7 @@ class EvenementType extends AbstractType
 
     /**
      * Méthode permettant de gérer les options du formulaires
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {

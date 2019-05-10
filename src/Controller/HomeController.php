@@ -50,6 +50,15 @@ class HomeController extends AbstractController{
         ]); 
     }
 
+    /**
+     * Méthode permettant de renvoyer la page "Données Personnelles"
+     * @Route("/donneesPerso", name="donneesPerso")
+     * @return Symfony\Component\HttpFoundation\Response;
+     */
+    public function donneesPerso(){
+        return $this->render("Home/donneesPerso.html.twig");
+    }
+
 }
 
 ?>

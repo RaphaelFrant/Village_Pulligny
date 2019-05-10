@@ -59,7 +59,7 @@
         {% endblock %}
 
         {% block body %}{% endblock %}
-        {% block footer %} <p>Site réalisé par Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">Contact</a> - <a href="#">Données Personnelles</a> - </p>{% endblock %}
+        {% block footer %} <p>Site réalisé par Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">Contact</a> - <a href="{{ path ('donneesPerso')}}">Données Personnelles</a> - </p>{% endblock %}
         {% block javascripts %}{% endblock %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
