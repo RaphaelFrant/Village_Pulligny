@@ -6,7 +6,7 @@
 
         <h2>{{detailEvent.titre}}</h2>
 
-        <p>Date: {{detailEvent.dateEvent|date('Y/m/d')}}<br/>
+        <p>Date: {{detailEvent.dateEvent|date('d/m/Y')}}<br/>
         {{detailEvent.type}}<br/>
         {{detailEvent.description}}</p>
         {% if detailEvent.inscription == 1 %}

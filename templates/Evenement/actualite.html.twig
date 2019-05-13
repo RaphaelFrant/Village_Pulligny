@@ -11,7 +11,7 @@
             </h5>
             <p>{{actualite.type}}</p>
             <p>{{actualite.description}}</p>
-            <p>Date : {{actualite.dateEvent|date('Y/m/d')}}</p>
+            <p>Date : {{actualite.dateEvent|date('d/m/Y')}}</p>
             {% if actualite.inscription == 1 %}
                 <p>Une inscription auprès de la mairie est obligatoire</p>
             {% endif%}

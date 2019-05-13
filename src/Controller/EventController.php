@@ -69,7 +69,7 @@ class EventController extends AbstractController{
      * @return Symfony\Component\HttpFoundation\Response;
      */
     public function actu(PaginatorInterface $paginator, Request $request){
-
+        
         $reposit = $this->getDoctrine()->getRepository(Evenement::class);
         //$actualites = $reposit->eventActu();
         $actualites = $paginator->paginate($reposit->eventActu(),

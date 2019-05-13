@@ -28,6 +28,7 @@ class EvenementRepository extends ServiceEntityRepository
 
     /**
      * Méthode renvoyant les événements sur la page correspondante et triés chronologiquement de façon décroissante
+     * @param EvenementRecherche $recherche Recupère une fourchette de date pour renvoyer une liste d'événements
      * @return Evenement[] Retourne une liste d'objet de type Evénement
      */
     public function eventTous(EvenementRecherche $recherche){
@@ -58,6 +59,7 @@ class EvenementRepository extends ServiceEntityRepository
      * @return Evenement[] Retourne une liste d'objet de type Evénement
      */
     public function eventActu(){
+        
         return $this->createQueryBuilder('e')
             ->andwhere('e.dateEvent > :dateJour')
             ->setParameter('dateJour', date('Y-m-d'))

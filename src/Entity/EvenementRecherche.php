@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+/**
+ * Classe permettant à l'utilisateur de rechercher un événement ou une actualité par le biais d'un filtre de date
+ */
 class EvenementRecherche{
 
     //VARIABLE
