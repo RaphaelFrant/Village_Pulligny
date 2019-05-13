@@ -6,10 +6,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Evenement;
+use App\Entity\EvenementRecherche;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\EvenementRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\EvenementRechercheType;
 
 /**
  * Classe controller des événements
@@ -29,15 +31,20 @@ class EventController extends AbstractController{
      */
     public function event(PaginatorInterface $paginator, Request $request){
 
+        $recherche = new EvenementRecherche();
+        $formRecherche = $this->createForm(EvenementRechercheType::class, $recherche);
+        $formRecherche->handleRequest($request);
+
         $reposit = $this->getDoctrine()->getRepository(Evenement::class);
         /*$listEvent = $reposit->findAll();*/
-        $listEvent = $paginator->paginate($reposit->eventTous(),
+        $listEvent = $paginator->paginate($reposit->eventTous($recherche),
             $request->query->getInt('page', 1),
             6
         );
 
         return $this->render("Evenement/evenement.html.twig", [
-            'listEvent' => $listEvent
+            'listEvent' => $listEvent,
+            'formRecherche' => $formRecherche->createView()
         ]);
     }
 

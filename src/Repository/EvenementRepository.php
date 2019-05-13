@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Evenement;
+use App\Entity\EvenementRecherche;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -29,10 +30,27 @@ class EvenementRepository extends ServiceEntityRepository
      * Méthode renvoyant les événements sur la page correspondante et triés chronologiquement de façon décroissante
      * @return Evenement[] Retourne une liste d'objet de type Evénement
      */
-    public function eventTous(){
-        return $this->createQueryBuilder('et')
+    public function eventTous(EvenementRecherche $recherche){
+
+        /*return $this->createQueryBuilder('et')
             ->orderBy('et.dateEvent', 'DESC')
-            ->getQuery();
+            ->getQuery();*/
+
+            $requete = $this->createQueryBuilder('et')
+                ->orderBy('et.dateEvent', 'DESC');
+            
+                if($recherche->getDateMin()){
+                    $requete = $requete->andWhere('et.dateEvent >= :dateMinimum')
+                        ->setParameter('dateMinimum', $recherche->getDateMin());
+                }
+
+                if($recherche->getDateMax()){
+                    $requete = $requete->andWhere('et.dateEvent <= :dateMaximum')
+                        ->setParameter('dateMaximum', $recherche->getDateMax());
+                }
+
+            return $requete->getQuery();
+
     }
 
     /**
