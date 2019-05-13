@@ -9,7 +9,9 @@
         <p>Date: {{detailEvent.dateEvent|date('Y/m/d')}}<br/>
         {{detailEvent.type}}<br/>
         {{detailEvent.description}}</p>
-        
+        {% if detailEvent.inscription == 1 %}
+            <p>Une inscription auprès de la mairie est obligatoire</p>
+        {% endif%}
 
     </main>
 

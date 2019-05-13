@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Ville de Pulligny{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('build/app.css')}}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -34,9 +35,11 @@
                     <li class="nav-item">
                             <a class="nav-link" href="{{ path('contact')}}">Contact </a>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="{{ path('login')}}">Administration </a>
-                    </li>
+                    {% if not app.user %}
+                      <li class="nav-item">
+                              <a class="nav-link" href="{{ path('login')}}">Administration </a>
+                      </li>
+                    {% endif %}
                     {% if app.user %}
                       <li class="nav-item">
                           <a class="nav-link" href="{{ path('admin.crud')}}">Gestion d'événement </a>
@@ -60,9 +63,11 @@
 
         {% block body %}{% endblock %}
         {% block footer %} <p>Site réalisé par Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">Contact</a> - <a href="{{ path ('donneesPerso')}}">Données Personnelles</a> - </p>{% endblock %}
-        {% block javascripts %}{% endblock %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        {% block javascripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <script src="{{ asset('build/app.js')}}"></script>
+        {% endblock %}
     </body>
 </html>

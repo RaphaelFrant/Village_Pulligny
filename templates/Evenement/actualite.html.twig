@@ -12,6 +12,9 @@
             <p>{{actualite.type}}</p>
             <p>{{actualite.description}}</p>
             <p>Date : {{actualite.dateEvent|date('Y/m/d')}}</p>
+            {% if actualite.inscription == 1 %}
+                <p>Une inscription auprès de la mairie est obligatoire</p>
+            {% endif%}
         {% endfor %}
 
     </main>
