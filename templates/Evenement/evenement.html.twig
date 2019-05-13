@@ -4,17 +4,21 @@
 
     <main>
 
-        <h2>Evénement</h2>
+        <div>
+            <h2>Evénement</h2>
 
-        {% for event in listEvent %}
-            <h5>
-                <a href="{{ path('event.detail', {id: event.id})}}">{{event.titre}}</a>
-            </h5>
-            <p>{{event.type}}</p>
-            <p>{{event.description}}</p>
-            <p>Date : {{event.dateEvent|date('Y/m/d')}}</p>
-        {% endfor %}
-        
+            {% for event in listEvent %}
+                <h5>
+                    <a href="{{ path('event.detail', {id: event.id})}}">{{event.titre}}</a>
+                </h5>
+                <p>{{event.type}}</p>
+                <p>{{event.description}}</p>
+                <p>Date : {{event.dateEvent|date('Y/m/d')}}</p>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            {{ knp_pagination_render(listEvent) }}
+        </div>
 
     </main>
 

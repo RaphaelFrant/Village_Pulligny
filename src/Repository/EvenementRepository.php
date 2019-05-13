@@ -26,6 +26,16 @@ class EvenementRepository extends ServiceEntityRepository
     }
 
     /**
+     * Méthode renvoyant les événements sur la page correspondante et triés chronologiquement de façon décroissante
+     * @return Evenement[] Retourne une liste d'objet de type Evénement
+     */
+    public function eventTous(){
+        return $this->createQueryBuilder('et')
+            ->orderBy('et.dateEvent', 'DESC')
+            ->getQuery();
+    }
+
+    /**
      * Méthode renvoyant les actualités sur la page correspondante
      * @return Evenement[] Retourne une liste d'objet de type Evénement
      */

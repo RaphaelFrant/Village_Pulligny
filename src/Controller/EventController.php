@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Evenement;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\EvenementRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Classe controller des événements
@@ -21,12 +23,18 @@ class EventController extends AbstractController{
     /**
      * Méthode permettant d'affichr l'ensemble des événements de la base de données dans la page "Evenement"
      * @Route("/event", name="event")
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Symfony\Component\HttpFoundation\Response;
      */
-    public function event(){
+    public function event(PaginatorInterface $paginator, Request $request){
 
         $reposit = $this->getDoctrine()->getRepository(Evenement::class);
-        $listEvent = $reposit->findAll();
+        /*$listEvent = $reposit->findAll();*/
+        $listEvent = $paginator->paginate($reposit->eventTous(),
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return $this->render("Evenement/evenement.html.twig", [
             'listEvent' => $listEvent
@@ -49,12 +57,18 @@ class EventController extends AbstractController{
     /**
      * Méthode permettant de n'afficher que les événements qui n'ont pas encore eu lieu sur la page "Actualité"
      * @Route("/actu", name="actu")
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Symfony\Component\HttpFoundation\Response;
      */
-    public function actu(){
+    public function actu(PaginatorInterface $paginator, Request $request){
 
         $reposit = $this->getDoctrine()->getRepository(Evenement::class);
-        $actualites = $reposit->eventActu();
+        //$actualites = $reposit->eventActu();
+        $actualites = $paginator->paginate($reposit->eventActu(),
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return $this->render("Evenement/actualite.html.twig", [
             'actualites' => $actualites
