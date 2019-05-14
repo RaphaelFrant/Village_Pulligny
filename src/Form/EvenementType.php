@@ -9,6 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 
 /**
  * Classe permettant de générer un formulaire pour la gestion des événements
@@ -31,6 +34,10 @@ class EvenementType extends AbstractType
                 'label' => 'Date de l\'événement'
             ])
             ->add('inscription')
+            ->add('imageFile', FileType::class, [
+                'required' => false
+            ])
+            //->add('created_at', HiddenType::class)
         ;
     }
 
