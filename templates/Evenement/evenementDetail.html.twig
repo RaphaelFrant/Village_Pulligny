@@ -8,6 +8,9 @@
 
         {% if detailEvent.nomFichier %}
             <img src="{{ vich_uploader_asset(detailEvent, 'imageFile')}}" style="width: 100%; height:auto" />
+
+            {% else %}
+            <img src="/images/events/empty.png" style="width: 100%; height:auto" />
         {% endif %}
 
         <p>Date: {{detailEvent.dateEvent|date('d/m/Y')}}<br/>
