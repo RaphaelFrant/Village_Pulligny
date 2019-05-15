@@ -22,7 +22,9 @@ class HomeController extends AbstractController{
      */
     public function index(){
 
-        return $this->render("Home/home.html.twig");
+        return $this->render("Home/home.html.twig", [
+            'current_menu' => 'accueil'
+        ]);
         
     }
 
@@ -32,7 +34,9 @@ class HomeController extends AbstractController{
      * @return Symfony\Component\HttpFoundation\Response;
      */
     public function histoire(){
-        return $this->render("Home/history.html.twig");
+        return $this->render("Home/history.html.twig", [
+            'current_menu' => 'histoire'
+        ]);
     }
 
     /**
@@ -46,6 +50,7 @@ class HomeController extends AbstractController{
         $horaireList = $reposit->findAll();
     
         return $this->render("Home/service.html.twig", [
+            'current_menu' => 'service',
             'horaireList' => $horaireList
         ]); 
     }

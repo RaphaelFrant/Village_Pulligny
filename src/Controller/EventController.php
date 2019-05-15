@@ -43,6 +43,7 @@ class EventController extends AbstractController{
         );
 
         return $this->render("Evenement/evenement.html.twig", [
+            'current_menu' => 'evenement',
             'listEvent' => $listEvent,
             'formRecherche' => $formRecherche->createView()
         ]);
@@ -78,6 +79,7 @@ class EventController extends AbstractController{
         );
 
         return $this->render("Evenement/actualite.html.twig", [
+            'current_menu' => 'actualite',
             'actualites' => $actualites
         ]);
     }

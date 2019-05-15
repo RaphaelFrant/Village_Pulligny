@@ -64,6 +64,7 @@ class AdminEventController extends AbstractController{
         $eventList = $reposit->findAll();
 
         return $this->render("Administration/evenement/crudEvent.html.twig", [
+            'current_menu' => 'gestEvenement',
             'eventList' => $eventList
         ]);
     }

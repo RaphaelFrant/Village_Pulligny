@@ -28,6 +28,7 @@ class SecurityController extends AbstractController{
         $error = $authentificationUtils->getLastAuthenticationError();
 
         return $this->render("Administration/login.html.twig", [
+            'current_menu' => 'login',
             'user' => $user,
             'error' => $error
         ]);
