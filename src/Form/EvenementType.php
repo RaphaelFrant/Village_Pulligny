@@ -34,8 +34,9 @@ class EvenementType extends AbstractType
                 'label' => 'Date de l\'événement'
             ])
             ->add('inscription')
-            ->add('imageFile', FileType::class, [
-                'required' => false
+            ->add('pictureFiles', FileType::class, [
+                'required' => false,
+                'multiple' => true
             ])
             //->add('created_at', HiddenType::class)
         ;

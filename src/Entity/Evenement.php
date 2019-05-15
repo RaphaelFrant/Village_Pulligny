@@ -2,18 +2,20 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Entity\Picture;
 
 /**
  * Classe Evénement permettant la création d'objet événement
  * @ORM\Entity(repositoryClass="App\Repository\EvenementRepository")
  * @UniqueEntity("titre")
- * @Vich\Uploadable()
  */
 class Evenement
 {
@@ -24,19 +26,6 @@ class Evenement
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @var string|null
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nomFichier;
-
-    /**
-     * @var File|null
-     * @Assert\Image(mimeTypes="image/png")
-     * @Vich\UploadableField(mapping="event_image", fileNameProperty="nomFichier")
-     */
-    private $imageFile;
 
     /**
      * @Assert\Length(min=3, max=100)
@@ -69,6 +58,23 @@ class Evenement
      * @ORM\Column(type="datetime")
      */
     private $created_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="evenement", orphanRemoval=true, cascade={"persist"})
+     */
+    private $pictures;
+
+    /**
+     * @Assert\All({
+     *  @Assert\Image(mimeTypes="image/png")
+     * })
+     */
+    private $pictureFiles;
+
+    public function __construct()
+    {
+        $this->pictures = new ArrayCollection();
+    }
 
 
     //GETTEUR et SETTEUR
@@ -137,56 +143,6 @@ class Evenement
         return $this;
     }
 
-    /**
-     * Get the value of nomFichier
-     *
-     * @return  string|null
-     */ 
-    public function getNomFichier()
-    {
-        return $this->nomFichier;
-    }
-
-    /**
-     * Set the value of nomFichier
-     *
-     * @param  string|null  $nomFichier
-     *
-     * @return  self
-     */ 
-    public function setNomFichier($nomFichier)
-    {
-        $this->nomFichier = $nomFichier;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of imageFile
-     *
-     * @return  File|null
-     */ 
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * Set the value of imageFile
-     *
-     * @param  File|null  $imageFile
-     *
-     * @return  self
-     */ 
-    public function setImageFile($imageFile)
-    {
-        $this->imageFile = $imageFile;
-        if($this->imageFile instanceof UploadedFile){
-            $this->created_at = new \DateTime('now');
-        }
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
@@ -199,4 +155,60 @@ class Evenement
         return $this;
     }
 
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getEvenement() === $this) {
+                $picture->setEvenement(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * Get })
+     */ 
+    public function getPictureFiles()
+    {
+        return $this->pictureFiles;
+    }
+
+    /**
+     * Set })
+     *
+     * @return  self
+     */ 
+    public function setPictureFiles($pictureFiles): self
+    {
+        foreach($pictureFiles as $pictureFile){
+            $picture = new Picture();
+            $picture->setImageFile($pictureFile);
+            $this->addPicture($picture);
+        }
+
+        $this->pictureFiles = $pictureFiles;
+        return $this;
+    }
 }

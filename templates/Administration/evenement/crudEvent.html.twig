@@ -6,7 +6,7 @@
         <h1>Gestion des événements</h1>
 
         {% for message in app.flashes('success') %}
-            <div>{{ message }}</div>
+            <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
 
         <a href="{{path('admin.creation')}}" class="btn btn-primary">Ajouter</a>

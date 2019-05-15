@@ -4,6 +4,22 @@
 
     <main>
         <h2>Editer l'événement</h2>
+
+        {% for picture in evenement.pictures %}
+            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="100" alt="">
+            
+            {% if app.user %}
+                <form method="post" action="{{path('admin.picture.suppr', {id: picture.id})}}" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer cet événement?')">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
+                    <button class="btn btn-danger">Supprimer</button>
+                </form>
+            {% endif %}
+
+
+
+        {% endfor %}
+
         {{form_start(formModifEvent)}}
             {{form_rest(formModifEvent)}}
             <button type="submit">Enregistrer</button>
