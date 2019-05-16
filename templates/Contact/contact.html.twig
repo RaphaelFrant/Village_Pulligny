@@ -3,22 +3,28 @@
 {% block body %}
 
     <main>
+        <div>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
 
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">{{ message }}</div>
-        {% endfor %}
+            {% if not formContact.vars.valid %}
+                <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
+            {% endif %}
 
-        {% if not formContact.vars.valid %}
-            <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
-        {% endif %}
+            <h2>Contactez nous</h2>
+            <p>Veuillez remplir les champs suivants</p>
 
-        <h2>Contactez nous</h2>
-        <p>Veuillez remplir les champs suivants</p>
+            {{form_start(formContact)}}
+                {{form_rest(formContact)}}
+                <button type="submit">Envoyer</button>
+            {{form_end(formContact)}}
 
-        {{form_start(formContact)}}
-            {{form_rest(formContact)}}
-            <button type="submit">Envoyer</button>
-        {{form_end(formContact)}}
+        </div>
+
+        <div id="map" style="width: 100%; height: 400px">
+            
+        </div>
 
     </main>
 

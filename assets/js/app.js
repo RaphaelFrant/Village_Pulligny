@@ -5,6 +5,11 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
+ import Map from './map.js'
+
+
+ Map.init()
+
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 
