@@ -74,6 +74,7 @@ class Evenement
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->created_at = new \DateTime('now');
     }
 
 
