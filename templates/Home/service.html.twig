@@ -12,31 +12,41 @@
             <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
         
-            <table>
-                {% for horaire in horaireList %}
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td>{{ horaire.nomJour }}</td><td>{{ horaire.heureDebut|date('H:i') }}</td><td>{{ horaire.heureFin|date('H:i') }}</td>
-                        {% if app.user %}
-                            <td><a href="{{ path('admin.horaire.edit', {id: horaire.id})}}" class="btn btn-primary">Mise à jour</a></td>
-                        {% endif %}
+                        <td><b>Jour</b></td>
+                        <td><b>Horaires</b></td>
                     </tr>
-                    
-                {% endfor %}
+                </thead>
+                <tbody>
+                    {% for horaire in horaireList %}
+                        <tr>
+                            <td>{{ horaire.nomJour }}</td><td>{{ horaire.heureDebut|date('H:i') }}</td><td>{{ horaire.heureFin|date('H:i') }}</td>
+                            {% if app.user %}
+                                <td><a href="{{ path('admin.horaire.edit', {id: horaire.id})}}" class="btn btn-primary">Mise à jour</a></td>
+                            {% endif %}
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
             </table>
         
 
         
 
         <h4>Services Proposés</h4>
-        <ul>
-            <li>Serv1</li>
-            <li>Serv1</li>
-            <li>Serv1</li>
-            <li>Serv1</li>
-            <li>Serv1</li>
-            <li>Serv1</li>
-            <li>Serv1</li>
-        </ul>
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Service 1</li>
+                <li class="list-group-item">Service 1</li>
+                <li class="list-group-item">Service 1</li>
+                <li class="list-group-item">Service 1</li>
+                <li class="list-group-item">Service 1</li>
+                <li class="list-group-item">Service 1</li>
+                <li class="list-group-item">Service 1</li>
+            </ul>
+        </div>
         
 
     </main>

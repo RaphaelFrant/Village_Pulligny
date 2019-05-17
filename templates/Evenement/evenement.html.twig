@@ -9,21 +9,42 @@
                 <button class="btn btn-primary">Rechercher</button>
             {{ form_end(formRecherche) }}
         </div>
-        <div>
-            <h2>Evénement</h2>
 
-            {% for event in listEvent %}
-                <h5>
-                    <a href="{{ path('event.detail', {id: event.id})}}">{{event.titre}}</a>
-                </h5>
-                <p>{{event.type}}</p>
-                <p>{{event.description}}</p>
-                <p>Date : {{event.dateEvent|date('d/m/Y')}}</p>
-            {% endfor %}
+        <div class="container">
+            <h2>Evénement</h2>
+            <div class="row flex">
+                {% for event in listEvent %}
+                    <div class="col-4">
+                        <div class="card">
+                            {% cache 'evenement' ~ event.id event.createdat.timestamp %}
+                                <div class="card-mb-4">
+                                    {% if event.picture %}
+                                        <img src="{{ vich_uploader_asset(event.picture, 'imageFile') }}" class="img-thumbnail" alt="card-img-top">
+                                        {% else %}
+                                        <img src="/images/events/empty.png" class="img-thumbnail" alt="card-img-top">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h5>
+                                                <a href="{{ path('event.detail', {id: event.id})}}">{{event.titre}}</a>
+                                            </h5>
+                                            <p>{{event.type}}</p>
+                                            <p>{{event.description}}</p>
+                                            <p>Date : {{event.dateEvent|date('d/m/Y')}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endcache %}
+                        </div>
+                    </div>
+                {% endfor %}   
         </div>
         <div class="pagination">
             {{ knp_pagination_render(listEvent) }}
         </div>
+
+
+            
 
     </main>
 

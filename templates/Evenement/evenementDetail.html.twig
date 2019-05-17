@@ -6,9 +6,11 @@
 
         <h2>{{detailEvent.titre}}</h2>
 
-        {% for picture in detailEvent.pictures %}
-            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="300" alt="">
-        {% endfor %}
+        {% if detailEvent.picture %}
+            <img src="{{ vich_uploader_asset(detailEvent.picture, 'imageFile') }}"  alt="">
+            {% else %}
+            <img src="/images/events/empty.png" alt="">
+        {% endif %}
 
         <p>Date: {{detailEvent.dateEvent|date('d/m/Y')}}<br/>
         {{detailEvent.type}}<br/>
@@ -16,6 +18,10 @@
         {% if detailEvent.inscription == 1 %}
             <p>Une inscription auprès de la mairie est obligatoire</p>
         {% endif%}
+
+        {% for picture in detailEvent.pictures %}
+            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="300" alt="">
+        {% endfor %}
 
     </main>
 

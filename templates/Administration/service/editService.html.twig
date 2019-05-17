@@ -6,8 +6,15 @@
 
         <h2>Editer l'horaire</h2>
         {{form_start(formModifHeure)}}
+            <div class="row">
+                <div class="col-md-4">{{ form_row(formModifHeure.nomJour) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{ form_row(formModifHeure.heureDebut) }}</div>
+                <div class="col-md-4">{{ form_row(formModifHeure.heureFin) }}</div>
+            </div>
             {{form_rest(formModifHeure)}}
-            <button type="submit">Enregistrer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         {{form_end(formModifHeure)}}
 
     </main>

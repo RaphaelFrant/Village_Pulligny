@@ -5,24 +5,36 @@
     <main>
         <h2>Editer l'événement</h2>
 
-        {% for picture in evenement.pictures %}
-            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="100" alt="">
-            
-            {% if app.user %}
-                <form method="post" action="{{path('admin.picture.suppr', {id: picture.id})}}" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer cet événement?')">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
-                    <button class="btn btn-danger">Supprimer</button>
-                </form>
-            {% endif %}
+        {% if evenement.pictures %}
+            <h5>Image(s) actuelle(s)</h5>
+            <div class="border">
+                {% for picture in evenement.pictures %}
+                    <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="100" alt="">
+                    
+                        <form method="post" action="{{path('admin.picture.suppr', {id: picture.id})}}" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer cet événement?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
 
-
-
-        {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}    
 
         {{form_start(formModifEvent)}}
+            <div class="row">
+                <div class="col-md-4">{{ form_row(formModifEvent.titre) }}</div>
+                <div class="col-md-4">{{ form_row(formModifEvent.type) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">{{ form_row(formModifEvent.description) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{ form_row(formModifEvent.dateEvent) }}</div>
+                <div class="col-md-4">{{ form_row(formModifEvent.pictureFiles) }}</div>
+            </div>
             {{form_rest(formModifEvent)}}
-            <button type="submit">Enregistrer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         {{form_end(formModifEvent)}}
 
     </main>

@@ -3,10 +3,22 @@
 {% block body %}
 
     <main>
+        <h2>Création d'un événement</h2>
         
         {{form_start(formEvent)}}
+            <div class="row">
+                <div class="col-md-4">{{ form_row(formEvent.titre) }}</div>
+                <div class="col-md-4">{{ form_row(formEvent.type) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">{{ form_row(formEvent.description) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{ form_row(formEvent.dateEvent) }}</div>
+                <div class="col-md-4">{{ form_row(formEvent.pictureFiles) }}</div>
+            </div>
             {{form_rest(formEvent)}}
-            <button type="submit">Enregistrer</button>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         {{form_end(formEvent)}}
         
 

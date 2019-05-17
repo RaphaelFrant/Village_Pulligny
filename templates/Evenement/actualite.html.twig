@@ -6,15 +6,27 @@
 
         <h2>Actualité</h2>
         {% for actualite in actualites %}
-            <h5>
-                <a href="{{ path('event.detail', {id: actualite.id})}}">{{actualite.titre}}</a>
-            </h5>
-            <p>{{actualite.type}}</p>
-            <p>{{actualite.description}}</p>
-            <p>Date : {{actualite.dateEvent|date('d/m/Y')}}</p>
-            {% if actualite.inscription == 1 %}
-                <p>Une inscription auprès de la mairie est obligatoire</p>
-            {% endif%}
+
+            {% cache 'actu' ~ actualite.id actualite.createdat.timestamp %}
+
+                {% if actualite.picture %}
+                    <img src="{{ vich_uploader_asset(actualite.picture, 'imageFile') }}" class="img-thumbnail" width="300" alt="">
+                    {% else %}
+                    <img src="/images/events/empty.png" class="img-thumbnail" width="300" alt="">
+                {% endif %}
+
+                <h5>
+                    <a href="{{ path('event.detail', {id: actualite.id})}}">{{actualite.titre}}</a>
+                </h5>
+                <p>{{actualite.type}}</p>
+                <p>{{actualite.description}}</p>
+                <p>Date : {{actualite.dateEvent|date('d/m/Y')}}</p>
+                {% if actualite.inscription == 1 %}
+                    <p>Une inscription auprès de la mairie est obligatoire</p>
+                {% endif %}
+
+            {% endcache %}
+
         {% endfor %}
 
         <div class="pagination">

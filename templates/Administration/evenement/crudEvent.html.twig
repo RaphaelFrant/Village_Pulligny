@@ -3,25 +3,27 @@
 {% block body %}
 
     <main>
-        <h1>Gestion des événements</h1>
+        <h2>Gestion des événements</h2>
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
 
-        <a href="{{path('admin.creation')}}" class="btn btn-primary">Ajouter</a>
-        <table>
+        <a href="{{path('admin.creation')}}" class="btn btn-success">Ajouter</a>
+        <table class="table table-striped">
                     
-            <tbody>
+            <thead>
                 <tr>
                     <td><b>Evenements</b></td>
                     <td><b>Actions</b></td>
                 </tr>
+            </thead>    
+            <tbody>    
                 {% for event in eventList %}
                     <tr>
                         <td>{{ event.titre }}</td>
                         <td><a href="{{path('admin.event.edit', {id: event.id})}}" class="btn btn-primary">Modifier</a>
-                            <form method="post" action="{{path('admin.event.suppr', {id: event.id})}}" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer cet événement?')">
+                            <form method="post" action="{{path('admin.event.suppr', {id: event.id})}}" style="display: inline-block" onsubmit="return confirm('Êtes-vous certain de vouloir supprimer cet événement?')">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
                                 <button class="btn btn-danger">Supprimer</button>
