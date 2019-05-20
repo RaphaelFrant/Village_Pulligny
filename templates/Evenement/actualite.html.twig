@@ -4,7 +4,7 @@
 
     <main>
 
-        <h2>Actualité</h2>
+        <h2>{% trans %}Actualité{% endtrans %}</h2>
         {% for actualite in actualites %}
 
             {% cache 'actu' ~ actualite.id actualite.createdat.timestamp %}

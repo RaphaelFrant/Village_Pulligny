@@ -12,12 +12,12 @@
                 <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
             {% endif %}
 
-            <h2>Contactez nous</h2>
-            <p>Veuillez remplir les champs suivants</p>
+            <h2>{% trans %}Contactez nous{% endtrans %}</h2>
+            <p>{% trans %}Veuillez remplir les champs suivants{% endtrans %}</p>
 
             {{form_start(formContact)}}
                 {{form_rest(formContact)}}
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="submit" class="btn btn-primary">{% trans %}Envoyer{% endtrans %}</button>
             {{form_end(formContact)}}
 
         </div>

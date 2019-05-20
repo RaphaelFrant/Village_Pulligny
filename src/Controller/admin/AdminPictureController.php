@@ -29,8 +29,6 @@ class AdminPictureController extends AbstractController{
 
     }
 
-
-
 }
 
 ?>

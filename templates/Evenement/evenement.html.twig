@@ -6,12 +6,12 @@
 
         <div class="jumbotron">
             {{ form_start(formRecherche) }}
-                <button class="btn btn-primary">Rechercher</button>
+                <button class="btn btn-primary">{% trans %}Rechercher{% endtrans %}</button>
             {{ form_end(formRecherche) }}
         </div>
 
         <div class="container">
-            <h2>Evénement</h2>
+            <h2>{% trans %}Evénement{% endtrans %}</h2>
             <div class="row flex">
                 {% for event in listEvent %}
                     <div class="col-4">

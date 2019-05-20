@@ -22,37 +22,46 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link {% if current_menu is defined and current_menu == 'accueil' %}active{% endif %}" href="{{ path('home')}}">Accueil</a>
+                      <a class="nav-link {% if current_menu is defined and current_menu == 'accueil' %}active{% endif %}" href="{{ path('home')}}">{% trans %}Accueil{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link {% if current_menu is defined and current_menu == 'histoire' %}active{% endif %}" href="{{ path('history')}}">Historique</a>
+                      <a class="nav-link {% if current_menu is defined and current_menu == 'histoire' %}active{% endif %}" href="{{ path('history')}}">{% trans %}Historique{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'service' %}active{% endif %}" href="{{ path('service')}}">Service</a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'service' %}active{% endif %}" href="{{ path('service')}}">{% trans %}Service{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'actualite' %}active{% endif %}" href="{{ path('actu')}}">Actualite</a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'actualite' %}active{% endif %}" href="{{ path('actu')}}">{% trans %}Actualite{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'evenement' %}active{% endif %}" href="{{ path('event')}}">Evenement</a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'evenement' %}active{% endif %}" href="{{ path('event')}}">{% trans %}Evenement{% endtrans %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}" href="{{ path('contact')}}">Contact </a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}" href="{{ path('contact')}}">{% trans %}Contact{% endtrans %}</a>
                     </li>
                     {% if not app.user %}
                       <li class="nav-item">
-                              <a class="nav-link {% if current_menu is defined and current_menu == 'login' %}active{% endif %}" href="{{ path('login')}}">Administration </a>
+                          <a class="nav-link {% if current_menu is defined and current_menu == 'login' %}active{% endif %}" href="{{ path('login')}}">{% trans %}Administration{% endtrans %}</a>
                       </li>
                     {% endif %}
                     {% if app.user %}
                       <li class="nav-item">
-                          <a class="nav-link {% if current_menu is defined and current_menu == 'gestEvenement' %}active{% endif %}" href="{{ path('admin.crud')}}">Gestion d'événement </a>
+                          <a class="nav-link {% if current_menu is defined and current_menu == 'gestEvenement' %}active{% endif %}" href="{{ path('admin.crud')}}">{% trans %}Gestion d'événement{% endtrans %}</a>
                       </li>
                       <li class="nav-item"></li>
-                        <a class="nav-link" href="{{ path('logout')}}">Se Déconnecter</a>
+                        <a class="nav-link" href="{{ path('logout')}}">{% trans %}Se Déconnecter{% endtrans %}</a>
                       </li>
                     {% endif %}
                   </ul>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {% trans %}Langue{% endtrans %}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="{{ path('langue', {lang:'fr'})}}">Français</a>
+                      <a class="dropdown-item" href="{{ path('langue', {lang:'en'})}}">Anglais</a>
+                    </div>
+                  </div>
                   <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
@@ -60,13 +69,13 @@
                 </div>
               </nav>
 
-              <h1>Bienvenue à Pulligny</h1>
+              <h1>{% trans %}Bienvenue à{% endtrans %} Pulligny</h1>
 
               <p>IMAGE ILLU</p>
         {% endblock %}
 
         {% block body %}{% endblock %}
-        {% block footer %} <p>Site réalisé par Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">Contact</a> - <a href="{{ path ('donneesPerso')}}">Données Personnelles</a> - </p>{% endblock %}
+        {% block footer %} <p>{% trans %}Site réalisé par {% endtrans %}Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">{% trans %}Contact{% endtrans %}</a> - <a href="{{ path ('donneesPerso')}}">{% trans %}Données Personnelles{% endtrans %}</a> - </p>{% endblock %}
         
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

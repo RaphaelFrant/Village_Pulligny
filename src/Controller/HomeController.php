@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Service;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ServiceRepository;
 
@@ -62,6 +63,24 @@ class HomeController extends AbstractController{
      */
     public function donneesPerso(){
         return $this->render("Home/donneesPerso.html.twig");
+    }
+
+    /**
+     * Méthode permettant de changer de langue
+     * @Route("/langue/{lang}", name="langue")
+     * @return Symfony\Component\HttpFoundation\Response;
+     */
+    public function langue(Request $request, string $lang){
+
+        if($lang != null){
+            $this->get('session')->set('_locale', $lang);
+        }
+
+        $url = $request->headers->get('referer');
+        if(empty($url)){
+            $url = $this->container->get('router')->generate('index');
+        }
+        return $this->redirect($url);
     }
 
 }
