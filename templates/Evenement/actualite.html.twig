@@ -7,8 +7,6 @@
         <h2>{% trans %}Actualité{% endtrans %}</h2>
         {% for actualite in actualites %}
 
-            {% cache 'actu' ~ actualite.id actualite.createdat.timestamp %}
-
                 {% if actualite.picture %}
                     <img src="{{ vich_uploader_asset(actualite.picture, 'imageFile') }}" class="img-thumbnail" width="300" alt="">
                     {% else %}
@@ -24,8 +22,6 @@
                 {% if actualite.inscription == 1 %}
                     <p>Une inscription auprès de la mairie est obligatoire</p>
                 {% endif %}
-
-            {% endcache %}
 
         {% endfor %}
 
