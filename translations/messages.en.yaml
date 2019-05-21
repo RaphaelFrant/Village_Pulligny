@@ -12,6 +12,8 @@ Se Déconnecter: Disconnect
 Données Personnelles: Personnal Data
 Site réalisé par: Website realize by
 Bienvenue à: Welcome to
+Français: French
+Anglais: English
 
 # Home
 Info pratique: Pratical Information
@@ -33,6 +35,9 @@ Gestion de vos données personnelles: Personnal Data management
 #evenement
 Rechercher: Search
 Evénement: Event
+Date minimale: Between the
+Date maximale: and the
+
 
 #Actualité
 Actualité: Event To Come
@@ -41,6 +46,10 @@ Actualité: Event To Come
 Contactez nous: Contact us
 Veuillez remplir les champs suivants: Complete this form
 Envoyer: Send
-
+Nom: Surname
+Prénom: Firstname
+Email: Mail
+Téléphone: Phone
+Message: Message
 
 

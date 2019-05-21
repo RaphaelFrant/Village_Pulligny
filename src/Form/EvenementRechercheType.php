@@ -21,11 +21,13 @@ class EvenementRechercheType extends AbstractType
         $builder
             ->add('dateMin', DateType::class, [
                 'required' => false,
-                'label' => 'Date minimale'
+                'label' => 'Date minimale',
+                'label_format' => '%name%',
             ])
             ->add('dateMax', DateType::class, [
                 'required' => false,
-                'label' => 'Date maximale'
+                'label' => 'Date maximale',
+                'label_format' => '%name%',
             ])
         ;
     }

@@ -61,7 +61,7 @@ class EvenementRepository extends ServiceEntityRepository
     public function eventActu(){
         
         return $this->createQueryBuilder('e')
-            ->andwhere('e.dateEvent > :dateJour')
+            ->andwhere('e.dateEvent >= :dateJour')
             ->setParameter('dateJour', date('Y-m-d'))
             ->orderBy('e.dateEvent', 'ASC')
             ->getQuery()
