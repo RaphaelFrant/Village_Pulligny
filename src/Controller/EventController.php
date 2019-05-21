@@ -12,6 +12,10 @@ use App\Repository\EvenementRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EvenementRechercheType;
+use App\Entity\Inscription;
+use App\Form\InscriptionType;
+use App\Mailer\InscriptMailer;
+use App\Controller\CreaPdfController;
 
 /**
  * Classe controller des événements
@@ -21,7 +25,13 @@ class EventController extends AbstractController{
     //VARIABLE
     private $managEvent;
     private $reposit;
+    private $pdf;
 
+    public function __construct(CreaPdfController $pdf)
+    {
+        $this->pdf = $pdf;
+    }
+    
     /**
      * Méthode permettant d'affichr l'ensemble des événements de la base de données dans la page "Evenement"
      * @Route("/event", name="event")
@@ -55,10 +65,28 @@ class EventController extends AbstractController{
      * @param Evenement $detailEvent
      * @return Symfony\Component\HttpFoundation\Response;
      */
-    public function detail(Evenement $detailEvent){
+    public function detail(Evenement $detailEvent, Request $request, InscriptMailer $inscriptMailer){
+
+        $inscription = new Inscription();
+        $inscription->setEvent($detailEvent);
+        $formInscript = $this->createForm(InscriptionType::class, $inscription);
+        $formInscript->handleRequest($request);
+
+        if($formInscript->isSubmitted() && $formInscript->isValid()){
+
+           
+            $pdf = $this->pdf->creaPdf($inscription);
+
+            $inscriptMailer->notify($inscription, $pdf);
+            $this->addFlash('success', 'Inscription bien envoyée');
+            return $this->redirectToRoute('event.detail', [
+                'id' => $detailEvent->getId()
+            ]);
+        }
 
         return $this->render("Evenement/evenementDetail.html.twig", [
-            'detailEvent' => $detailEvent
+            'detailEvent' => $detailEvent,
+            'formInscript' => $formInscript->createView()
         ]);
     }
 

@@ -4,6 +4,14 @@
 
     <main>
 
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {% if not formInscript.vars.valid %}
+            <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
+        {% endif %}
+
         <h2>{{detailEvent.titre}}</h2>
 
         {% if detailEvent.picture %}
@@ -17,6 +25,15 @@
         {{detailEvent.description}}</p>
         {% if detailEvent.inscription == 1 %}
             <p>Une inscription auprès de la mairie est obligatoire</p>
+            <a href="#" class="btn btn-primary">S'inscrire</a>
+
+            <div id="formInscript">
+                {{ form_start(formInscript) }}
+                    {{ form_rest(formInscript) }}
+                    <button class="btn btn-primary">Envoyer</button>
+                {{ form_end(formInscript) }}
+            </div>
+
         {% endif%}
 
         {% for picture in detailEvent.pictures %}

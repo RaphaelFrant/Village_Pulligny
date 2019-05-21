@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Inscription</title>
+  </head>
+  <body>
+    
+    <h1>Inscription à un événement</h1>
+
+    <p><b>Adressé à la mairie de Pulligny</b></p>
+
+    <p>De Monsieur/Madame {{ inscription.nom }} {{ inscription.prenom }} </p>
+
+    <p>Je souhaite m'inscrire à l'événement <b>{{ inscription.event.titre }}</b> qui aura lieu prochainement.<br/>
+    Aussi, je vous sollicite afin de procéder à mon inscription audit événement qui est organisé dans votre commune.<br/>
+    Par la même, je m'engage à venir le jour de l'événement ou de prévenir la mairie en cas d'impossibilité de ma part.</p>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a elit egestas, molestie nibh non, venenatis magna. Etiam sit amet vestibulum neque, ut condimentum quam. 
+        Cras laoreet justo tortor, sit amet gravida magna gravida a. Cras non quam quis nibh suscipit vehicula. Nullam dapibus dui non augue bibendum euismod. Duis nisl erat, 
+        laoreet nec ligula sed, vulputate euismod magna. Nullam vel tristique libero, et blandit neque. Vestibulum non mauris quis elit varius ultrices. Integer congue purus sit 
+        amet risus tincidunt bibendum. In hac habitasse platea dictumst. Mauris iaculis eleifend est sit amet malesuada. Etiam eget consequat magna. Duis purus quam, vehicula ut 
+        sapien vel, aliquet bibendum orci. Nam mattis suscipit ornare. Fusce porttitor, dolor a sagittis scelerisque, leo velit condimentum nisl, a ullamcorper sem ligula ac 
+        urna.</p>
+
+    <p>Inscription à confirmer à l'adresse suivante:<a href="{{ inscription.email }}">{{ inscription.email }}</a></p>
+
+  </body>
+</html>
