@@ -3,26 +3,35 @@
 {% block body %}
 
     <main>
-        <div>
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">{{ message }}</div>
-            {% endfor %}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
 
-            {% if not formContact.vars.valid %}
-                <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
-            {% endif %}
+        {% if not formContact.vars.valid %}
+            <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
+        {% endif %}
 
-            <h2>{% trans %}Contactez nous{% endtrans %}</h2>
+        <h2>{% trans %}Contactez nous{% endtrans %}</h2>
+        <div class="card">
+
             <p>{% trans %}Veuillez remplir les champs suivants{% endtrans %}</p>
 
             {{form_start(formContact)}}
+                <div class="row">
+                    <div class="col-md-4">{{ form_row(formContact.nom) }}</div>
+                    <div class="col-md-4">{{ form_row(formContact.prenom) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ form_row(formContact.email) }}</div>
+                    <div class="col-md-4">{{ form_row(formContact.telephone) }}</div>
+                </div>
                 {{form_rest(formContact)}}
                 <button type="submit" class="btn btn-primary">{% trans %}Envoyer{% endtrans %}</button>
             {{form_end(formContact)}}
 
         </div>
 
-        <div id="map" style="width: 100%; height: 400px">
+        <div class="card" id="map" style="width: 100%; height: 400px">
             <!--ICI s'affiche la carte-->
         </div>
 

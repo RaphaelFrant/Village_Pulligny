@@ -26,7 +26,8 @@ Histoire de Pulligny: Pulligny's story
 
 #Service
 Jour: Day
-Horaires: Schedules
+Horaires Matin: Morning Schedules
+Horaires Après-Midi: Afternoon Schedules
 Services Proposés: Proposed Services
 
 #donneesPerso
@@ -42,6 +43,9 @@ Date maximale: and the
 #Actualité
 Actualité: Event To Come
 
+#Inscription
+S'inscrire: Register
+
 #Contact
 Contactez nous: Contact us
 Veuillez remplir les champs suivants: Complete this form
@@ -51,5 +55,7 @@ Prénom: Firstname
 Email: Mail
 Téléphone: Phone
 Message: Message
+
+
 
 

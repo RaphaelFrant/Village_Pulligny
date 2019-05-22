@@ -3,29 +3,38 @@
 {% block body %}
 
     <main>
+        <h1 class="mainTitle">{% trans %}Bienvenue à{% endtrans %} Pulligny</h1>
 
+        <img class="mainImage" src="/images/events/pulligny.png" />
 
-        <section>
+        <h2>{% trans %}Info pratique{% endtrans %}</h2>
 
-            <article>
-                <h2>{% trans %}Info pratique{% endtrans %}</h2>
-                
-            </article>
-                
-            <div class="card">
-                <div class="card-header">
-                    {% trans %}Les mots du maire{% endtrans %}
-                </div>
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra ante elit, et laoreet nunc ultrices vitae. Mauris blandit ligula non magna mattis, 
-                                sit amet fermentum dui egestas.</p>
-                        <footer class="blockquote-footer">Robert Molteux, {% trans %}Maire de 2012 à 2017{% endtrans %}, <cite title="Source Title">{% trans %}Discours d'entrée en fonction{% endtrans %}</cite></footer>
-                    </blockquote>
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam arcu dolor, vulputate et quam vel, suscipit tempus mi. Etiam eget efficitur libero. Morbi rutrum, 
+                    ipsum eget fringilla porttitor, quam enim venenatis augue, ut scelerisque sem nunc vitae nisi. Aenean ex purus, egestas eget blandit quis, tristique at sem. 
+                    Vivamus placerat vestibulum pharetra. Proin id enim metus. Maecenas tincidunt non purus sit amet blandit. Morbi varius nisi in dui sagittis, et hendrerit augue 
+                    vehicula. Cras tempor quam ac tellus sodales lobortis. Sed ut aliquet tortor. Mauris dapibus, libero eget dignissim commodo, augue orci faucibus magna, et 
+                    scelerisque lacus velit maximus neque. Ut euismod, massa quis iaculis ultricies, magna lacus lacinia ex, at iaculis purus erat a dui. Donec eleifend sodales 
+                    dolor, vitae accumsan mi volutpat eget. Sed vel magna maximus, pretium odio quis, feugiat tortor. Sed at suscipit augue, nec efficitur tellus. Praesent dictum 
+                    lacus quis euismod iaculis. Ut molestie scelerisque mauris. Nulla vel mi tincidunt, dapibus orci id, hendrerit sapien. Fusce non elit vel ipsum commodo dictum. 
+                    Donec eleifend id neque et faucibus. Pellentesque ac eros leo. Nulla lobortis in tortor sed sollicitudin. Nam porttitor aliquam nulla, non porta ex volutpat id. 
+                    Cras fermentum justo non auctor tempor.</p>
             </div>
-
-        </section>
+        </div>
+                
+        <div class="card">
+            <div class="card-header">
+                {% trans %}Les mots du maire{% endtrans %}
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra ante elit, et laoreet nunc ultrices vitae. Mauris blandit ligula non magna mattis, 
+                        sit amet fermentum dui egestas.</p>
+                    <footer class="blockquote-footer">Robert Molteux, {% trans %}Maire de 2012 à 2017{% endtrans %}, <cite title="Source Title">{% trans %}Discours d'entrée en fonction{% endtrans %}</cite></footer>
+                </blockquote>
+            </div>
+        </div>
 
     </main>
 

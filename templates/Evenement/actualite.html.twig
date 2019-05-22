@@ -5,25 +5,36 @@
     <main>
 
         <h2>{% trans %}Actualité{% endtrans %}</h2>
-        {% for actualite in actualites %}
 
-                {% if actualite.picture %}
-                    <img src="{{ vich_uploader_asset(actualite.picture, 'imageFile') }}" class="img-thumbnail" width="300" alt="">
-                    {% else %}
-                    <img src="/images/events/empty.png" class="img-thumbnail" width="300" alt="">
-                {% endif %}
-
-                <h5>
-                    <a href="{{ path('event.detail', {id: actualite.id})}}">{{actualite.titre}}</a>
-                </h5>
-                <p>{{actualite.type}}</p>
-                <p>{{actualite.description}}</p>
-                <p>Date : {{actualite.dateEvent|date('d/m/Y')}}</p>
-                {% if actualite.inscription == 1 %}
-                    <p>Une inscription auprès de la mairie est obligatoire</p>
-                {% endif %}
-
-        {% endfor %}
+        <div class="container">
+            <div class="row flex">
+                {% for actualite in actualites %}
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-mb-4">
+                                {% if actualite.picture %}
+                                    <img src="{{ vich_uploader_asset(actualite.picture, 'imageFile') }}" class="img-thumbnail" width="300" alt="">
+                                    {% else %}
+                                    <img src="/images/events/empty.png" class="img-thumbnail" width="300" alt="">
+                                {% endif %}
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h5>
+                                            <a href="{{ path('event.detail', {id: actualite.id})}}">{{actualite.titre}}</a>
+                                        </h5>
+                                        <p>{{actualite.type}}</p>
+                                        <p>{{actualite.description}}</p>
+                                        <p>Date : {{actualite.dateEvent|date('d/m/Y')}}</p>
+                                        {% if actualite.inscription == 1 %}
+                                            <p>Une inscription auprès de la mairie est obligatoire</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}    
+        </div>
 
         <div class="pagination">
             {{ knp_pagination_render(actualites) }}

@@ -7,16 +7,19 @@
         <h2>Horaires et services</h2>
 
         <h4>Horaires</h4>
+        <div class="card">
+            
 
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">{{ message }}</div>
-        {% endfor %}
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
         
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <td><b>{% trans %}Jour{% endtrans %}</b></td>
-                        <td><b>{% trans %}Horaires{% endtrans %}</b></td>
+                        <td><b>{% trans %}Horaires Matin{% endtrans %}</b></td>
+                        <td><b>{% trans %}Horaires Après-Midi{% endtrans %}</b></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +34,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-        
+        </div>
 
         
 

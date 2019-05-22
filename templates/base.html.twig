@@ -68,14 +68,10 @@
                   </form>
                 </div>
               </nav>
-
-              <h1>{% trans %}Bienvenue à{% endtrans %} Pulligny</h1>
-
-              <p>IMAGE ILLU</p>
         {% endblock %}
 
         {% block body %}{% endblock %}
-        {% block footer %} <p>{% trans %}Site réalisé par {% endtrans %}Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">{% trans %}Contact{% endtrans %}</a> - <a href="{{ path ('donneesPerso')}}">{% trans %}Données Personnelles{% endtrans %}</a> - </p>{% endblock %}
+        {% block footer %} <p>{% trans %}Site réalisé par {% endtrans %} Raphaël Frantzen - Copyright 2019 - <a href="{{ path('contact')}}">{% trans %}Contact{% endtrans %}</a> - <a href="{{ path ('donneesPerso')}}">{% trans %}Données Personnelles{% endtrans %}</a> - </p>{% endblock %}
         
           <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

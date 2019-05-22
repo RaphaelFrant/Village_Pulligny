@@ -4,6 +4,8 @@
 
     <main>
 
+        <h1 class="mainTitle">Actualité</h1>
+
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
@@ -12,33 +14,42 @@
             <div class="alert alert-danger">Le formulaire n'a pas été rempli correctement</div>
         {% endif %}
 
-        <h2>{{detailEvent.titre}}</h2>
-
         {% if detailEvent.picture %}
-            <img src="{{ vich_uploader_asset(detailEvent.picture, 'imageFile') }}"  alt="">
+            <img class="mainImage" src="{{ vich_uploader_asset(detailEvent.picture, 'imageFile') }}"  alt="">
             {% else %}
-            <img src="/images/events/empty.png" alt="">
+            <img class="mainImage" src="/images/events/empty.png" alt="">
         {% endif %}
+
+        <h2 class="titreEvent">{{detailEvent.titre}}</h2>
 
         <p>Date: {{detailEvent.dateEvent|date('d/m/Y')}}<br/>
         {{detailEvent.type}}<br/>
         {{detailEvent.description}}</p>
         {% if detailEvent.inscription == 1 %}
             <p>Une inscription auprès de la mairie est obligatoire</p>
-            <a href="#" class="btn btn-primary" id="inscriptBtn" {% if formInscript.vars.submitted %}style="display: none" {% endif %}>S'inscrire</a><br>
+            <a href="#" class="btn btn-primary" id="inscriptBtn" {% if formInscript.vars.submitted %}style="display: none" {% endif %}>{% trans %}S'inscrire{% endtrans %}</a><br>
 
-            <div id="formInscript" {% if not formInscript.vars.submitted %}style="display: none" {% endif %}>
-                {{ form_start(formInscript) }}
-                    {{ form_rest(formInscript) }}
-                    <button class="btn btn-primary">Envoyer</button>
-                {{ form_end(formInscript) }}
-            </div>
+                <div id="formInscript" {% if not formInscript.vars.submitted %}style="display: none" {% endif %}>
+                    <div class="card">
+                        {{ form_start(formInscript) }}
+                            <div class="row">
+                                <div class="col-md-4">{{ form_row(formInscript.nom) }}</div>
+                                <div class="col-md-4">{{ form_row(formInscript.prenom) }}</div>
+                                <div class="col-md-4">{{ form_row(formInscript.email) }}</button></div>
+                            </div>
+                            {{ form_rest(formInscript) }}
+                            <button class="btn btn-primary">{% trans %}Envoyer{% endtrans %}</button>
+                        {{ form_end(formInscript) }}
+                    </div>
+                </div>
 
-        {% endif%}
+        {% endif %}
 
-        {% for picture in detailEvent.pictures %}
-            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="300" alt="">
-        {% endfor %}
+        <div class="card">
+            {% for picture in detailEvent.pictures %}
+                <img class="imgEvent" src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="300" alt="">
+            {% endfor %}
+        </div>
 
     </main>
 
