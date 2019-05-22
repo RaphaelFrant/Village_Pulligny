@@ -24,34 +24,11 @@ class InscriptMailer extends AbstractController{
             ->setFrom($inscription->getEmail())
             ->setTo('contact@pulligny.fr')
             //Permet de former un mail sous la forme d'un document html
-            ->setBody($this->render('Inscription/inscription.html.twig', [
+            ->setBody($this->render('Inscription/inscriptMail.html.twig', [
                 'inscription' => $inscription
             ]), 'text/html')
             ->attach(\Swift_Attachment::fromPath($pdf));
         $this->mailer->send($inscriptEnvoye);
     }
-
-    /*public function notify(Inscription $inscription){
-        $inscriptEnvoye = (new \Swift_Message('Inscription : ' . $inscription->getEvent()->getTitre()))
-            ->setFrom($inscription->getEmail())
-            ->setTo('contact@pulligny.fr')
-            //Permet de former un mail sous la forme d'un document html
-            ->setBody($this->render('Inscription/inscription.html.twig', [
-                'inscription' => $inscription
-            ]), 'text/html');
-        $this->mailer->send($inscriptEnvoye);
-    }*/
-
-    /*public function notify(Inscription $inscription, Dompdf $dompdf){
-        $inscriptEnvoye = (new \Swift_Message('Inscription : ' . $inscription->getEvent()->getTitre()))
-            ->setFrom($inscription->getEmail())
-            ->setTo('contact@pulligny.fr')
-            //Permet de former un mail sous la forme d'un document html
-            ->setBody($this->render('Inscription/inscription.html.twig', [
-                'inscription' => $inscription
-            ]), 'text/html');
-            //->attach(\Swift_Attachment::fromPath('Inscription/inscription.html.twig'));
-        $this->mailer->send($inscriptEnvoye);
-    }*/
 
 }

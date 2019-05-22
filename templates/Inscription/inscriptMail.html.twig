@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Inscription</title>
+  </head>
+  <body>
+    
+    <h1>Inscription à un événement</h1>
+
+    <p><b>Adressé à la mairie de Pulligny</b></p>
+
+    <p>De Monsieur/Madame {{ inscription.nom }} {{ inscription.prenom }} </p>
+
+    <p>Une personne souhaite s'inscrire à l'événement <b>{{ inscription.event.titre }}</b> qui aura lieu prochainement.<br/>
+    Ce mail est destiné à la prise en compte des inscriptions pour ledit événement</p>
+
+
+    <p>Inscription à confirmer à l'adresse suivante:<a href="{{ inscription.email }}">{{ inscription.email }}</a></p>
+
+  </body>
+</html>

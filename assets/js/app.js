@@ -5,15 +5,27 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
+
+
+ 
+//var $ = require('jquery')
+// any CSS you require will output into a single css file (app.css in this case)
+require('../css/app.css');
+
+
+// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
+const $ = require('jquery');
+
+let $btnInscript = $('#inscriptBtn')
+ $btnInscript.click(e => {
+     e.preventDefault()
+     $('#formInscript').slideDown();
+     $btnInscript.slideUp();
+ })
+
  import Map from './map.js'
 
 
  Map.init()
-
-// any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.css');
-
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// const $ = require('jquery');
-
+ 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

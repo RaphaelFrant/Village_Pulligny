@@ -25,9 +25,9 @@
         {{detailEvent.description}}</p>
         {% if detailEvent.inscription == 1 %}
             <p>Une inscription auprès de la mairie est obligatoire</p>
-            <a href="#" class="btn btn-primary">S'inscrire</a>
+            <a href="#" class="btn btn-primary" id="inscriptBtn" {% if formInscript.vars.submitted %}style="display: none" {% endif %}>S'inscrire</a><br>
 
-            <div id="formInscript">
+            <div id="formInscript" {% if not formInscript.vars.submitted %}style="display: none" {% endif %}>
                 {{ form_start(formInscript) }}
                     {{ form_rest(formInscript) }}
                     <button class="btn btn-primary">Envoyer</button>

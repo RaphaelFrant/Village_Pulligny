@@ -74,7 +74,7 @@ class EventController extends AbstractController{
 
         if($formInscript->isSubmitted() && $formInscript->isValid()){
 
-           
+           //Création d'un document pdf après soumission du formulaire
             $pdf = $this->pdf->creaPdf($inscription);
 
             $inscriptMailer->notify($inscription, $pdf);
